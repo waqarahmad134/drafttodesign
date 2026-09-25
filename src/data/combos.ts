@@ -13,7 +13,7 @@ export interface Combo {
   faqs: ComboFaq[];
 }
 
-export const combos: Combo[] = [
+const handCombos: Combo[] = [
   {
     service: '3d-rendering',
     city: 'houston',
@@ -411,3 +411,7 @@ export const combos: Combo[] = [
     ],
   },
 ];
+
+import { generatedCombos } from './combos-generated';
+
+export const combos: Combo[] = [...handCombos, ...generatedCombos];
