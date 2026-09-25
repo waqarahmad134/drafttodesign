@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+const faqs = [
+  { q: 'How does working remotely actually work?', a: 'You send measurements, photos, sketches or ideas through our quote form or WhatsApp. We prepare your plans, 3D models or renders and deliver everything digitally, with annotated reviews and two revision rounds included.' },
+  { q: 'How much do your services cost?', a: 'Floor plans start at $99, single 3D renders at $79, 3D models at $199, interior concepts at $299 and exterior/landscaping concepts at $249. Every project gets a fixed quote before we start.' },
+  { q: 'How fast is delivery?', a: 'Floor plans in 3 to 5 days, renders in 3 to 7 days, full design concepts in 7 to 14 days. Rush delivery is available on request.' },
+  { q: 'Do you handle building permits?', a: 'No. We provide design and visualization services only: plans, drafting, 3D modeling, rendering and design concepts. We do not prepare permit submission sets or stamped drawings.' },
+  { q: 'Which areas do you serve?', a: 'We serve clients across the entire USA, with a focus on Texas, California and Florida. Because everything is delivered digitally, your location does not affect quality or price.' },
+  { q: 'What file formats do I receive?', a: 'Print-ready PDFs for everything, editable CAD files (DWG) for plans and drafting, SketchUp/FBX/OBJ for 3D models, and high-resolution 4K images for renders.' },
+  { q: 'What if I only have a rough sketch or just an idea?', a: 'That is enough to start. Send the sketch, some photos and rough measurements, and we will turn it into professional drawings. We ask clarifying questions before we begin so nothing is guessed.' },
+  { q: 'How do revisions work?', a: 'Two revision rounds are included in every project. You tell us what to change, we update and resend. Additional rounds can be quoted if needed.' },
+  { q: 'How do I pay?', a: 'We confirm the payment method when you approve your quote. Work begins after the agreed initial payment.' },
+  { q: 'Can you match a specific style?', a: 'Yes. Send reference photos, Pinterest boards or descriptions of the style you want, modern, farmhouse, mid-century, coastal, traditional, and we design to match.' },
+];
+---
+
+<BaseLayout
+  title="FAQ | DraftToDesign - Questions About Our Design Services"
+  description="Answers about DraftToDesign services: remote process, pricing, delivery times, file formats, revisions, service areas and our no-permit-work policy."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-3">Frequently asked questions</h1>
+    <p class="text-lg text-slate-600 mb-10">Everything you need to know before starting your project.</p>
+    <FAQ items={faqs} />
+    <CTABand />
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>

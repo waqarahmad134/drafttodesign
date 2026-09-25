@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import CTABand from '../../components/CTABand.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities');
+  return cities.map((c) => ({
+    params: { state: c.data.stateSlug, city: c.id.replace(/\.md$/, '') },
+    props: { city: c },
+  }));
+}
+
+const { city } = Astro.props;
+const { Content } = await render(city);
+const allCities = (await getCollection('cities')).filter((c) => c.id !== city.id).slice(0, 6);
+const slugOf = (e: { id: string }) => e.id.replace(/\.md$/, '');
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Design, drafting and 3D rendering services in ${city.data.cityName}, ${city.data.stateAbbr}`,
+  provider: { '@type': 'ProfessionalService', name: 'DraftToDesign', url: 'https://drafttodesign.com' },
+  areaServed: {
+    '@type': 'City',
+    name: city.data.cityName,
+    containedInPlace: { '@type': 'State', name: city.data.stateName },
+  },
+  description: city.data.description,
+};
+---
+
+<BaseLayout
+  title={city.data.metaTitle}
+  description={city.data.metaDescription}
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <nav class="text-sm text-slate-500 mb-6">
+        <a href="/" class="hover:text-brand-600">Home</a> <span class="mx-1">/</span>
+        <a href={`/${city.data.stateSlug}/`} class="hover:text-brand-600">{city.data.stateName}</a> <span class="mx-1">/</span>
+        <span class="text-slate-700">{city.data.cityName}</span>
+      </nav>
+      <h1 class="text-4xl font-extrabold text-brand-900 mb-4">{city.data.title}</h1>
+      <p class="text-lg text-slate-600">{city.data.description}</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid lg:grid-cols-3 gap-10">
+    <article class="lg:col-span-2 prose prose-slate max-w-none prose-headings:text-brand-900 prose-a:text-brand-600">
+      <Content />
+      {city.data.neighborhoods && (
+        <>
+          <h2>Areas served around {city.data.cityName}</h2>
+          <p>{city.data.neighborhoods.join(', ')}, and the surrounding area.</p>
+        </>
+      )}
+    </article>
+    <aside>
+      <div class="sticky top-24">
+        <QuoteForm compact />
+      </div>
+    </aside>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-extrabold text-brand-900 mb-6">Also serving</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+      {allCities.map((c) => (
+        <a href={`/${c.data.stateSlug}/${slugOf(c)}/`} class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-300 transition">
+          <h3 class="font-bold text-brand-900">{c.data.cityName}, {c.data.stateAbbr}</h3>
+        </a>
+      ))}
+    </div>
+    <CTABand />
+  </div>
+
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>
+
+<style>
+  .prose h2 { font-size: 1.5rem; font-weight: 700; margin: 1.75rem 0 0.75rem; }
+  .prose p, .prose ul { margin-bottom: 1rem; line-height: 1.7; color: #475569; }
+  .prose ul { list-style: disc; padding-left: 1.5rem; }
+  .prose strong { color: #0e1e4a; }
+</style>

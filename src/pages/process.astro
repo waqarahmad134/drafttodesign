@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTABand from '../components/CTABand.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+const steps = [
+  { n: '1', t: 'Tell us about your project', d: 'Fill the quote form or message us on WhatsApp. Send anything you have: measurements, photos, old plans, sketches, Pinterest boards, or just a description of what you want.' },
+  { n: '2', t: 'Receive a fixed quote in 24 hours', d: 'We review your requirements and reply with a fixed price and a delivery date. You approve, and we start. No hourly billing, no scope creep.' },
+  { n: '3', t: 'First version delivered', d: 'Depending on the service, you receive your floor plan, 3D model, renders or design concept within 3 to 14 days, with clear notes on what you are seeing.' },
+  { n: '4', t: 'Revisions', d: 'Two revision rounds are included in every project. You mark what to change, we update and resend. Most projects are approved within the included rounds.' },
+  { n: '5', t: 'Final files', d: 'You receive print-ready PDFs, editable CAD files (DWG), 3D models (SKP/FBX) or high-resolution 4K renders, whatever your project needs.' },
+];
+---
+
+<BaseLayout
+  title="Our Process | How DraftToDesign Works - Draft to Delivery"
+  description="How DraftToDesign works: send requirements, get a fixed quote in 24 hours, review with 2 revision rounds, receive final files. Simple 5-step remote process."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-3">How it works</h1>
+    <p class="text-lg text-slate-600 mb-12">Five simple steps from your idea to finished design files. Everything happens online.</p>
+    <div class="space-y-6">
+      {steps.map((s) => (
+        <div class="flex gap-5 bg-white border border-slate-200 rounded-2xl p-6">
+          <p class="shrink-0 w-12 h-12 rounded-full bg-brand-600 text-white text-xl font-bold flex items-center justify-center">{s.n}</p>
+          <div>
+            <h2 class="text-xl font-bold text-brand-900 mb-2">{s.t}</h2>
+            <p class="text-slate-600">{s.d}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <CTABand />
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>

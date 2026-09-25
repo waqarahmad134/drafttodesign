@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<BaseLayout
+  title="Contact Us | Get a Free Quote - DraftToDesign"
+  description="Contact DraftToDesign for a free quote on floor plans, drafting, 3D modeling, rendering, interior or exterior design. We reply within 24 hours."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-3">Get a free quote</h1>
+    <p class="text-lg text-slate-600 mb-10">Tell us about your project. We reply within 24 hours with a fixed price and delivery date.</p>
+    <div class="grid md:grid-cols-5 gap-10">
+      <div class="md:col-span-3">
+        <QuoteForm />
+      </div>
+      <div class="md:col-span-2 space-y-6">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <h2 class="font-bold text-brand-900 mb-3">Other ways to reach us</h2>
+          <a href="https://wa.me/13094025405" class="flex items-center gap-3 text-slate-700 hover:text-brand-600 mb-3">
+            <span class="w-10 h-10 rounded-full bg-[#25d366] text-white flex items-center justify-center font-bold">W</span>
+            WhatsApp: fastest response
+          </a>
+          <p class="text-sm text-slate-500">Hours: Monday to Saturday, 9am to 7pm CT</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <h2 class="font-bold text-brand-900 mb-3">What to include</h2>
+          <ul class="text-sm text-slate-600 space-y-2 list-disc pl-5">
+            <li>Your city and state</li>
+            <li>Project type and approximate size</li>
+            <li>Photos, sketches or measurements (attach after we reply)</li>
+            <li>Your timeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>

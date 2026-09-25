@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTABand from '../components/CTABand.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+const categories = ['All', '3D Rendering', 'Interior Design', 'Exterior Design', 'Floor Plans'];
+---
+
+<BaseLayout
+  title="Portfolio | DraftToDesign - Our Design Work"
+  description="Browse DraftToDesign portfolio: 3D renders, interior design concepts, exterior and landscaping visuals, and floor plans for clients across the USA."
+>
+  <Header slot="header" />
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-3">Portfolio</h1>
+    <p class="text-lg text-slate-600 mb-10">A selection of our recent work for clients across the USA.</p>
+
+    <div class="flex flex-wrap gap-3 mb-10" id="filters">
+      {categories.map((c, i) => (
+        <button
+          data-filter={c}
+          class={`px-5 py-2 rounded-full text-sm font-medium border transition ${i === 0 ? 'bg-brand-600 text-white border-brand-600' : 'bg-white text-slate-600 border-slate-300 hover:border-brand-400'}`}
+        >
+          {c}
+        </button>
+      ))}
+    </div>
+
+    <div id="gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="col-span-full bg-slate-50 border border-dashed border-slate-300 rounded-3xl p-16 text-center">
+        <p class="text-xl font-bold text-brand-900 mb-2">Portfolio pieces are being prepared</p>
+        <p class="text-slate-600 max-w-xl mx-auto">We are curating our best 3D renders, interior concepts, exterior visuals and floor plans. Check back soon, or start your own project today.</p>
+        <a href="/contact/" class="inline-block mt-6 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-3 rounded-lg transition">Start Your Project</a>
+      </div>
+    </div>
+
+    <CTABand />
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll('#filters button');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => {
+        b.className = 'px-5 py-2 rounded-full text-sm font-medium border transition bg-white text-slate-600 border-slate-300 hover:border-brand-400';
+      });
+      btn.className = 'px-5 py-2 rounded-full text-sm font-medium border transition bg-brand-600 text-white border-brand-600';
+    });
+  });
+</script>

@@ -1,0 +1,62 @@
+---
+const serviceLinks = [
+  { label: '2D Floor Plans', href: '/services/2d-floor-plans/' },
+  { label: 'Architectural Drafting', href: '/services/architectural-drafting/' },
+  { label: '3D Modeling', href: '/services/3d-modeling/' },
+  { label: '3D Rendering', href: '/services/3d-rendering/' },
+  { label: 'Interior Design', href: '/services/interior-design/' },
+  { label: 'Exterior & Landscaping', href: '/services/exterior-design-landscaping/' },
+];
+const stateLinks = [
+  { label: 'Texas', href: '/texas/' },
+  { label: 'California', href: '/california/' },
+  { label: 'Florida', href: '/florida/' },
+];
+---
+
+<footer class="bg-brand-900 text-slate-300 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div>
+        <p class="font-extrabold text-xl text-white mb-3">DraftToDesign</p>
+        <p class="text-sm leading-relaxed">
+          2D drafting, 3D modeling, photorealistic rendering, interior design and
+          exterior/landscaping design for clients across the USA. Design and
+          visualization services only.
+        </p>
+      </div>
+      <div>
+        <p class="font-semibold text-white mb-3">Services</p>
+        <ul class="space-y-2 text-sm">
+          {serviceLinks.map((l) => (
+            <li><a href={l.href} class="hover:text-white transition">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-white mb-3">Service Areas</p>
+        <ul class="space-y-2 text-sm">
+          {stateLinks.map((l) => (
+            <li><a href={l.href} class="hover:text-white transition">{l.label}</a></li>
+          ))}
+          <li class="text-slate-400">Serving all of USA</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-white mb-3">Company</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/about/" class="hover:text-white transition">About</a></li>
+          <li><a href="/pricing/" class="hover:text-white transition">Pricing</a></li>
+          <li><a href="/portfolio/" class="hover:text-white transition">Portfolio</a></li>
+          <li><a href="/process/" class="hover:text-white transition">Process</a></li>
+          <li><a href="/faq/" class="hover:text-white transition">FAQ</a></li>
+          <li><a href="/contact/" class="hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-10 pt-6 text-xs text-slate-400 flex flex-col sm:flex-row justify-between gap-2">
+      <p>© {new Date().getFullYear()} DraftToDesign. All rights reserved.</p>
+      <p>Design and visualization services only. No permit or construction documentation.</p>
+    </div>
+  </div>
+</footer>

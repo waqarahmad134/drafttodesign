@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTABand from '../components/CTABand.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<BaseLayout
+  title="About DraftToDesign | Remote Design & Drafting Studio USA"
+  description="DraftToDesign is a remote design studio offering 2D floor plans, drafting, 3D modeling, rendering, interior and exterior design to clients across the USA."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-6">About DraftToDesign</h1>
+    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-5">
+      <p>
+        DraftToDesign is a remote design studio built on a simple idea: great design
+        should not require a local office visit or a five-figure budget. We deliver
+        professional 2D floor plans, architectural drafting, 3D modeling,
+        photorealistic rendering, interior design and exterior/landscaping concepts
+        to clients across the entire United States, all online.
+      </p>
+      <p>
+        Our focus is Texas, California and Florida, three states where construction
+        and remodeling never slow down, but our process works the same everywhere:
+        you send requirements, we deliver professional work digitally, fast.
+      </p>
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">What we do not do</h2>
+      <p>
+        We are upfront about our limits. We provide <strong>design and visualization
+        services only</strong>. We do not prepare building permit submission sets,
+        structural engineering, or stamped drawings. Permit projects take months and
+        require licensed local professionals, so we deliberately stay out of that
+        lane and focus on what we do best: fast, beautiful, accurate design work.
+      </p>
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Why clients choose us</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Fixed pricing quoted before work starts, no hourly billing</li>
+        <li>Delivery in days, not weeks</li>
+        <li>Two revision rounds included on every project</li>
+        <li>Professional file formats: PDF, CAD (DWG), 3D models, 4K renders</li>
+        <li>Direct communication through WhatsApp and email</li>
+      </ul>
+    </div>
+    <CTABand />
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>

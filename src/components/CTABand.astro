@@ -1,0 +1,23 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Have a project in mind?',
+  text = 'Send us your requirements and get a free, no-obligation quote within 24 hours.',
+} = Astro.props;
+---
+
+<section class="bg-brand-600 rounded-3xl px-6 py-12 sm:px-12 text-center text-white my-16">
+  <h2 class="text-3xl font-extrabold mb-3">{title}</h2>
+  <p class="text-brand-100 max-w-2xl mx-auto mb-8">{text}</p>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="/contact/" class="bg-white text-brand-700 font-semibold px-8 py-3 rounded-lg hover:bg-brand-50 transition">
+      Get a Free Quote
+    </a>
+    <a href="https://wa.me/13094025405" class="border-2 border-white/70 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition">
+      WhatsApp Us
+    </a>
+  </div>
+</section>

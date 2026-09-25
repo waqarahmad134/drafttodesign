@@ -1,0 +1,101 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<form
+  id="quote-form"
+  class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8"
+  data-compact={compact}
+>
+  <h2 class="text-2xl font-bold text-brand-900 mb-1">Get a free quote</h2>
+  <p class="text-sm text-slate-600 mb-6">Tell us about your project. We reply within 24 hours.</p>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for="q-name" class="block text-sm font-medium text-slate-700 mb-1">Name *</label>
+      <input id="q-name" name="name" required type="text" autocomplete="name"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+    </div>
+    <div>
+      <label for="q-email" class="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+      <input id="q-email" name="email" required type="email" autocomplete="email"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+    </div>
+    <div>
+      <label for="q-phone" class="block text-sm font-medium text-slate-700 mb-1">Phone</label>
+      <input id="q-phone" name="phone" type="tel" autocomplete="tel"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+    </div>
+    <div>
+      <label for="q-city" class="block text-sm font-medium text-slate-700 mb-1">City, State</label>
+      <input id="q-city" name="city" type="text" placeholder="e.g. Houston, TX" autocomplete="address-level2"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+    </div>
+    <div class="sm:col-span-2">
+      <label for="q-service" class="block text-sm font-medium text-slate-700 mb-1">Service needed *</label>
+      <select id="q-service" name="service" required
+        class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+        <option value="">Select a service</option>
+        <option>2D Floor Plans</option>
+        <option>Architectural Drafting</option>
+        <option>3D Modeling</option>
+        <option>3D Rendering</option>
+        <option>Interior Design</option>
+        <option>Exterior / Landscaping Design</option>
+        <option>Not sure yet</option>
+      </select>
+    </div>
+    <div class="sm:col-span-2">
+      <label for="q-message" class="block text-sm font-medium text-slate-700 mb-1">Project details *</label>
+      <textarea id="q-message" name="message" required rows="4"
+        placeholder="Describe your project: size, style, timeline, anything you already have (sketches, photos, measurements)..."
+        class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+    </div>
+  </div>
+  <p id="quote-status" class="hidden mt-4 text-sm rounded-lg px-4 py-3"></p>
+  <button type="submit"
+    class="mt-6 w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-lg transition">
+    Request Free Quote
+  </button>
+  <p class="mt-3 text-xs text-slate-500 text-center">
+    Prefer chat? <a href="https://wa.me/13094025405" class="text-brand-600 font-medium underline">Message us on WhatsApp</a>
+  </p>
+</form>
+
+<script>
+  const form = document.getElementById('quote-form');
+  const status = document.getElementById('quote-status');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (status) {
+      status.classList.remove('hidden');
+      status.className = 'mt-4 text-sm rounded-lg px-4 py-3 bg-brand-50 text-brand-900';
+      status.textContent = 'Sending your request...';
+    }
+    try {
+      // TODO: replace with the Formspree/Getform endpoint Waqar configures at deploy time
+      const endpoint = (form.dataset.endpoint as string) || '';
+      if (!endpoint) throw new Error('Form endpoint not configured yet.');
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, _subject: 'New quote request - DraftToDesign' }),
+      });
+      if (!res.ok) throw new Error('Send failed');
+      if (status) {
+        status.className = 'mt-4 text-sm rounded-lg px-4 py-3 bg-green-50 text-green-800';
+        status.textContent = 'Thanks! Your request is on its way. We will reply within 24 hours.';
+      }
+      form.reset();
+    } catch {
+      if (status) {
+        status.className = 'mt-4 text-sm rounded-lg px-4 py-3 bg-amber-50 text-amber-800';
+        status.textContent =
+          'The form is not connected yet. Please reach us on WhatsApp and we will take your details there.';
+      }
+    }
+  });
+</script>

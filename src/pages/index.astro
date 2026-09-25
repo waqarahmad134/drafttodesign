@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const slugOf = (e: { id: string }) => e.id.replace(/\.md$/, '');
+
+const faqs = [
+  {
+    q: 'How does working remotely actually work?',
+    a: 'You send measurements, photos, sketches or ideas through our quote form or WhatsApp. We prepare your plans, 3D models or renders and deliver everything digitally, with annotated reviews and two revision rounds included.',
+  },
+  {
+    q: 'How much do your services cost?',
+    a: 'Floor plans start at $99, single 3D renders at $79, 3D models at $199, interior concepts at $299 and exterior/landscaping concepts at $249. Every project gets a fixed quote before we start, no hourly billing.',
+  },
+  {
+    q: 'How fast is delivery?',
+    a: 'Floor plans in 3 to 5 days, renders in 3 to 7 days, full design concepts in 7 to 14 days. Rush delivery is available on request.',
+  },
+  {
+    q: 'Do you handle building permits?',
+    a: 'No. We provide design and visualization services only: plans, drafting, 3D modeling, rendering and design concepts. We do not prepare permit submission sets or stamped drawings.',
+  },
+  {
+    q: 'Which areas do you serve?',
+    a: 'We serve clients across the entire USA, with a focus on Texas, California and Florida. Because everything is delivered digitally, your location does not affect quality or price.',
+  },
+];
+
+const faqSchema = undefined;
+---
+
+<BaseLayout
+  title="DraftToDesign | 2D Floor Plans, 3D Modeling, Rendering & Design Services USA"
+  description="Professional 2D floor plans, architectural drafting, 3D modeling, photorealistic rendering, interior design and exterior/landscaping design across the USA. Free quote in 24 hours."
+  schema={faqSchema}
+>
+  <Header slot="header" />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Serving clients across the USA</p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-brand-900 leading-tight mb-6">
+          From draft to design, without leaving your home
+        </h1>
+        <p class="text-lg text-slate-600 mb-8">
+          2D floor plans, architectural drafting, 3D modeling, photorealistic rendering,
+          interior design and exterior/landscaping concepts, delivered remotely by
+          professionals. See your project before you build it.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact/" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-3.5 rounded-lg text-center transition">
+            Get a Free Quote
+          </a>
+          <a href="#services" class="border-2 border-brand-600 text-brand-700 font-semibold px-8 py-3.5 rounded-lg text-center hover:bg-brand-50 transition">
+            Explore Services
+          </a>
+        </div>
+        <div class="flex gap-8 mt-10 text-sm">
+          <div><p class="text-2xl font-extrabold text-brand-900">500+</p><p class="text-slate-500">Projects delivered</p></div>
+          <div><p class="text-2xl font-extrabold text-brand-900">24h</p><p class="text-slate-500">Quote turnaround</p></div>
+          <div><p class="text-2xl font-extrabold text-brand-900">50 states</p><p class="text-slate-500">Service coverage</p></div>
+        </div>
+      </div>
+      <div class="bg-brand-900 rounded-3xl aspect-[4/3] flex items-center justify-center text-white/70 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-600/40 to-brand-900"></div>
+        <div class="relative text-center px-8">
+          <svg class="mx-auto mb-4 opacity-80" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1V9z" />
+            <path d="M9 21v-6h6v6" />
+          </svg>
+          <p class="font-semibold">Portfolio renders coming soon</p>
+          <p class="text-sm text-white/60 mt-1">Photorealistic before/after showcases</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-3xl font-extrabold text-brand-900 text-center mb-3">Our services</h2>
+    <p class="text-slate-600 text-center max-w-2xl mx-auto mb-10">Everything you need to plan, visualize and design your project. Fixed pricing, fast delivery.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((s) => (
+        <a href={`/services/${slugOf(s)}/`} class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-300 transition group">
+          <h3 class="text-xl font-bold text-brand-900 mb-2 group-hover:text-brand-600 transition">{s.data.title}</h3>
+          <p class="text-sm text-slate-600 mb-4">{s.data.description}</p>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">From <strong class="text-brand-700">{s.data.priceFrom}</strong></span>
+            <span class="text-slate-500">{s.data.deliveryTime}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-brand-900 text-center mb-10">How it works</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { n: '1', t: 'Send your requirements', d: 'Measurements, photos, sketches or just ideas through our form or WhatsApp.' },
+          { n: '2', t: 'Get a fixed quote', d: 'We reply within 24 hours with a fixed price and delivery date. No surprises.' },
+          { n: '3', t: 'Review and revise', d: 'You review the first version and get two revision rounds included.' },
+          { n: '4', t: 'Receive final files', d: 'Print-ready PDFs, CAD files, 3D models or high-res renders delivered digitally.' },
+        ].map((s) => (
+          <div class="bg-white rounded-2xl p-6 border border-slate-200">
+            <p class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center mb-4">{s.n}</p>
+            <h3 class="font-bold text-brand-900 mb-2">{s.t}</h3>
+            <p class="text-sm text-slate-600">{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service areas -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-3xl font-extrabold text-brand-900 text-center mb-3">Where we work</h2>
+    <p class="text-slate-600 text-center max-w-2xl mx-auto mb-10">Focused on Texas, California and Florida, serving the entire USA remotely.</p>
+    <div class="grid sm:grid-cols-3 gap-6">
+      {[
+        { name: 'Texas', href: '/texas/', cities: 'Houston, Dallas, Austin, San Antonio' },
+        { name: 'California', href: '/california/', cities: 'Los Angeles, San Diego, San Francisco, Sacramento' },
+        { name: 'Florida', href: '/florida/', cities: 'Miami, Orlando, Tampa, Jacksonville' },
+      ].map((st) => (
+        <a href={st.href} class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-300 transition">
+          <h3 class="text-xl font-bold text-brand-900 mb-2">{st.name}</h3>
+          <p class="text-sm text-slate-600">{st.cities}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Quote + FAQ -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid lg:grid-cols-2 gap-12 items-start">
+    <QuoteForm />
+    <div>
+      <h2 class="text-3xl font-extrabold text-brand-900 mb-6">Common questions</h2>
+      <FAQ items={faqs} />
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <CTABand />
+  </div>
+
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>
