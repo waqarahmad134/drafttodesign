@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import CTABand from '../../../components/CTABand.astro';
+import InlineCTA from '../../../components/InlineCTA.astro';
+import WhatsAppFloat from '../../../components/WhatsAppFloat.astro';
+import { getCollection } from 'astro:content';
+import { combos } from '../../../data/combos';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  const cities = await getCollection('cities');
+  const slugOf = (e: { id: string }) => e.id.replace(/\.md$/, '');
+  return combos.map((combo) => {
+    const service = services.find((s) => slugOf(s) === combo.service);
+    const city = cities.find((c) => slugOf(c) === combo.city);
+    if (!service || !city) throw new Error(`Missing service or city for combo ${combo.service}/${combo.city}`);
+    return {
+      params: { state: city.data.stateSlug, city: combo.city, service: combo.service },
+      props: {
+        service,
+        city,
+        combo,
+        serviceTitles: Object.fromEntries(services.map((s) => [slugOf(s), s.data.shortTitle])),
+        cityNames: Object.fromEntries(cities.map((c) => [slugOf(c), { name: c.data.cityName, state: c.data.stateSlug }])),
+      },
+    };
+  });
+}
+
+const { service, city, combo, serviceTitles, cityNames } = Astro.props;
+const pageTitle = `${service.data.shortTitle} in ${city.data.cityName}, ${city.data.stateAbbr}`;
+const serviceSlug = service.id.replace(/\.md$/, '');
+
+const sameCity = combos.filter((c) => c.city === combo.city && c.service !== combo.service);
+const sameService = combos.filter((c) => c.service === combo.service && c.city !== combo.city);
+
+const slugOf = (e: { id: string }) => e.id.replace(/\.md$/, '');
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: pageTitle,
+  provider: { '@type': 'ProfessionalService', name: 'DraftToDesign', url: 'https://drafttodesign.com' },
+  areaServed: {
+    '@type': 'City',
+    name: city.data.cityName,
+    containedInPlace: { '@type': 'State', name: city.data.stateName },
+  },
+  description: combo.intro[0],
+  offers: { '@type': 'Offer', priceCurrency: 'USD', price: service.data.priceFrom?.replace(/[^0-9]/g, '') || '0' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: combo.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${pageTitle} | DraftToDesign`}
+  description={`${service.data.shortTitle} services in ${city.data.cityName}, ${city.data.stateAbbr}. ${service.data.description} Free quote in 24 hours.`}
+  schema={[schema, faqSchema]}
+>
+  <Header slot="header" />
+
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <nav class="text-sm text-slate-500 mb-6">
+        <a href="/" class="hover:text-brand-600">Home</a> <span class="mx-1">/</span>
+        <a href={`/${city.data.stateSlug}/`} class="hover:text-brand-600">{city.data.stateName}</a> <span class="mx-1">/</span>
+        <a href={`/${city.data.stateSlug}/${combo.city}/`} class="hover:text-brand-600">{city.data.cityName}</a> <span class="mx-1">/</span>
+        <span class="text-slate-700">{service.data.shortTitle}</span>
+      </nav>
+      <h1 class="text-4xl font-extrabold text-brand-900 mb-4">{pageTitle}</h1>
+      <p class="text-lg text-slate-600 mb-6">{service.data.description}</p>
+      <div class="flex flex-wrap gap-3 text-sm mb-8">
+        <span class="bg-white border border-brand-200 rounded-full px-4 py-1.5 text-brand-800">From {service.data.priceFrom}</span>
+        <span class="bg-white border border-brand-200 rounded-full px-4 py-1.5 text-brand-800">{service.data.deliveryTime} delivery</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#quote-form" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-3 rounded-lg transition text-center">
+          Get a Free Quote
+        </a>
+        <a href="https://wa.me/923044719600?text=drafttodesign.com%3A%20Hi!%20I%20want%20a%20free%20quote%20for%20my%20project." class="border-2 border-brand-600 text-brand-700 font-semibold px-8 py-3 rounded-lg hover:bg-brand-50 transition text-center">
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid lg:grid-cols-3 gap-10">
+    <article class="lg:col-span-2 prose prose-slate max-w-none prose-headings:text-brand-900 prose-a:text-brand-600">
+      {combo.intro.map((p) => <p>{p}</p>)}
+
+      <h2>{combo.localTitle}</h2>
+      {combo.localAngle.map((p) => <p>{p}</p>)}
+
+      <InlineCTA title={`Need ${service.data.shortTitle.toLowerCase()} in ${city.data.cityName}?`} text="Send your requirements and get a free, no-obligation quote within 24 hours." />
+
+      <h2>What's included</h2>
+      <ul>
+        {combo.points.map((pt) => <li>{pt}</li>)}
+      </ul>
+
+      <h2>How it works</h2>
+      <ol>
+        <li><strong>Request a quote.</strong> Use the form or WhatsApp to share your plans, sketches or measurements.</li>
+        <li><strong>Fixed price, fast.</strong> You get a fixed quote within 24 hours with a clear delivery date.</li>
+        <li><strong>Review and revise.</strong> Two revision rounds are included so the result matches your vision.</li>
+        <li><strong>Final delivery.</strong> Receive polished, professional files ready to use with contractors or clients.</li>
+      </ol>
+
+      <h2>Frequently asked questions</h2>
+      {combo.faqs.map((f) => (
+        <>
+          <h3>{f.q}</h3>
+          <p>{f.a}</p>
+        </>
+      ))}
+
+      {(sameCity.length > 0 || sameService.length > 0) && (
+        <>
+          <h2>Related services</h2>
+          {sameCity.length > 0 && (
+            <>
+              <p><strong>More services in {city.data.cityName}:</strong></p>
+              <ul>
+                {sameCity.map((c) => (
+                  <li><a href={`/${city.data.stateSlug}/${c.city}/${c.service}/`}>{serviceTitles[c.service]} in {city.data.cityName}</a></li>
+                ))}
+              </ul>
+            </>
+          )}
+          {sameService.length > 0 && (
+            <>
+              <p><strong>{service.data.shortTitle} in other cities:</strong></p>
+              <ul>
+                {sameService.map((c) => (
+                  <li><a href={`/${cityNames[c.city].state}/${c.city}/${c.service}/`}>{service.data.shortTitle} in {cityNames[c.city].name}</a></li>
+                ))}
+              </ul>
+            </>
+          )}
+        </>
+      )}
+    </article>
+    <aside>
+      <div class="sticky top-24">
+        <QuoteForm compact />
+      </div>
+    </aside>
+  </div>
+
+  <CTABand
+    title={`${service.data.shortTitle} in ${city.data.cityName} starts at ${service.data.priceFrom}`}
+    text="Get your free quote within 24 hours. No obligation, no pushy sales calls."
+  />
+  <WhatsAppFloat />
+  <Footer />
+</BaseLayout>

@@ -7,6 +7,7 @@ import CTABand from '../../components/CTABand.astro';
 import InlineCTA from '../../components/InlineCTA.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
 import { getCollection, render } from 'astro:content';
+import { combos } from '../../data/combos';
 
 export async function getStaticPaths() {
   const cities = await getCollection('cities');
@@ -20,6 +21,11 @@ const { city } = Astro.props;
 const { Content } = await render(city);
 const allCities = (await getCollection('cities')).filter((c) => c.id !== city.id).slice(0, 6);
 const slugOf = (e: { id: string }) => e.id.replace(/\.md$/, '');
+const mySlug = slugOf(city);
+const cityCombos = combos.filter((c) => c.city === mySlug);
+const serviceTitles: Record<string, string> = Object.fromEntries(
+  (await getCollection('services')).map((s) => [slugOf(s), s.data.shortTitle])
+);
 
 const schema = {
   '@context': 'https://schema.org',
@@ -81,6 +87,19 @@ const schema = {
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {cityCombos.length > 0 && (
+      <>
+        <h2 class="text-2xl font-extrabold text-brand-900 mb-6">Popular services in {city.data.cityName}</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {cityCombos.map((c) => (
+            <a href={`/${city.data.stateSlug}/${c.city}/${c.service}/`} class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-300 transition">
+              <h3 class="font-bold text-brand-900">{serviceTitles[c.service]} in {city.data.cityName}</h3>
+              <p class="text-sm text-slate-500 mt-1">Free quote in 24 hours</p>
+            </a>
+          ))}
+        </div>
+      </>
+    )}
     <h2 class="text-2xl font-extrabold text-brand-900 mb-6">Also serving</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
       {allCities.map((c) => (
