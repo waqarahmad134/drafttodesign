@@ -20,6 +20,9 @@ const {
 const siteUrl = 'https://drafttodesign.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
 
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
 import '../styles/global.css';
 
 const businessSchema = {
@@ -68,6 +71,8 @@ const businessSchema = {
     )}
   </head>
   <body class="bg-white text-ink font-sans antialiased">
+    <Analytics />
+    <SpeedInsights />
     <slot name="header" />
     <main>
       <slot />
