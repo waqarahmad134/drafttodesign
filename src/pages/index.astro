@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
+import InlineCTA from '../components/InlineCTA.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { getCollection } from 'astro:content';
 
@@ -113,6 +114,9 @@ const faqSchema = undefined;
           </div>
         ))}
       </div>
+      <div class="max-w-3xl mx-auto">
+        <InlineCTA />
+      </div>
     </div>
   </section>
 
@@ -122,9 +126,9 @@ const faqSchema = undefined;
     <p class="text-slate-600 text-center max-w-2xl mx-auto mb-10">Focused on Texas, California and Florida, serving the entire USA remotely.</p>
     <div class="grid sm:grid-cols-3 gap-6">
       {[
-        { name: 'Texas', href: '/texas/', cities: 'Houston, Dallas, Austin, San Antonio' },
-        { name: 'California', href: '/california/', cities: 'Los Angeles, San Diego, San Francisco, Sacramento' },
-        { name: 'Florida', href: '/florida/', cities: 'Miami, Orlando, Tampa, Jacksonville' },
+        { name: 'Texas', href: '/texas/', cities: 'Houston, Dallas, Austin, San Antonio, Fort Worth, El Paso' },
+        { name: 'California', href: '/california/', cities: 'Los Angeles, San Diego, San Francisco, San Jose, Oakland, Fresno, Sacramento' },
+        { name: 'Florida', href: '/florida/', cities: 'Miami, Orlando, Tampa, Jacksonville, Fort Lauderdale' },
       ].map((st) => (
         <a href={st.href} class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-300 transition">
           <h3 class="text-xl font-bold text-brand-900 mb-2">{st.name}</h3>

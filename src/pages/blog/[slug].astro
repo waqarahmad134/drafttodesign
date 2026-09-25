@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CTABand from '../../components/CTABand.astro';
+import InlineCTA from '../../components/InlineCTA.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
 import { getCollection, render } from 'astro:content';
 
@@ -42,6 +43,7 @@ const schema = {
     <article class="prose prose-slate max-w-none prose-headings:text-brand-900 prose-a:text-brand-600">
       <Content />
     </article>
+    <InlineCTA title="Have a project like this?" text="Get a free quote within 24 hours. No obligation." />
     <CTABand />
   </div>
   <Footer slot="footer" />
