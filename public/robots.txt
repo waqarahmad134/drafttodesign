@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://drafttodesign.com/sitemap-index.xml
+Sitemap: https://drafttodesign.com/sitemap.xml
