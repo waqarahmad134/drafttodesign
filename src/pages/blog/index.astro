@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTABand from '../../components/CTABand.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog | DraftToDesign - Guides on Rendering, Floor Plans & Design"
+  description="Practical guides on 3D rendering costs, floor plans, timelines and interior design concepts from the DraftToDesign team."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-3">Blog</h1>
+    <p class="text-lg text-slate-600 mb-10">Guides on rendering, floor plans, drafting and design, written for homeowners and builders.</p>
+
+    <div class="grid gap-6">
+      {posts.map((post) => (
+        <a href={`/blog/${post.id.replace(/\.md$/, '')}/`} class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-300 transition block">
+          <p class="text-sm text-slate-500 mb-2">
+            {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+          <h2 class="text-xl font-bold text-brand-900 mb-2">{post.data.title}</h2>
+          <p class="text-slate-600">{post.data.description}</p>
+          <span class="inline-block mt-3 text-brand-600 font-medium text-sm">Read more</span>
+        </a>
+      ))}
+    </div>
+
+    <CTABand />
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>
