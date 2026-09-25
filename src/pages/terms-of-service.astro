@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<BaseLayout
+  title="Terms of Service | DraftToDesign"
+  description="DraftToDesign terms of service: how our design services work, pricing, revisions, delivery, and your responsibilities as a client."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-2">Terms of Service</h1>
+    <p class="text-sm text-slate-500 mb-8">Last updated: September 25, 2026</p>
+    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-5">
+      <p>
+        These terms govern your use of drafttodesign.com and our design services.
+        By requesting a quote or ordering services, you agree to these terms.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Our services</h2>
+      <p>
+        DraftToDesign provides remote <strong>design and visualization services
+        only</strong>: 2D floor plans, architectural drafting, 3D modeling,
+        photorealistic 3D rendering, interior design concepts, and exterior/landscaping
+        concepts. All work is delivered digitally.
+      </p>
+      <p>
+        We do <strong>not</strong> provide building permit submission sets, structural
+        engineering, stamped or sealed drawings, or construction documentation. Our
+        deliverables are design tools for planning, presentation, and contractor
+        bidding, not legal construction documents.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Quotes and pricing</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Prices shown on our website are starting prices. Every project receives a fixed written quote before work begins.</li>
+        <li>A quote is valid for 30 days from the date it is issued.</li>
+        <li>The quoted price covers the agreed scope only. Additional views, rooms, or major scope changes are quoted separately.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Revisions</h2>
+      <p>
+        Every project includes <strong>two revision rounds</strong> at no extra charge.
+        A revision round means a consolidated list of changes submitted at one time.
+        Change requests beyond the included rounds, or changes that alter the project
+        scope, may incur additional fees quoted in advance.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Delivery</h2>
+      <p>
+        Delivery timelines stated on our website or in your quote are estimates based
+        on our current workload. We communicate proactively if a timeline shifts.
+        Delivery times assume you provide required inputs (plans, measurements,
+        reference images) promptly; delays on your side extend the timeline accordingly.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Your responsibilities</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Provide accurate measurements, plans, and project requirements.</li>
+        <li>Confirm that you have the rights to any reference materials you share.</li>
+        <li>Review deliverables promptly and submit revision requests as consolidated lists.</li>
+        <li>Verify our drawings and designs with your local contractor, engineer, or authority before construction. Our work does not replace professional site verification.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Payment</h2>
+      <p>
+        Payment terms are agreed in writing before work starts. For most projects we
+        require a deposit to begin, with the balance due on final delivery. Source
+        files remain our property until the project is paid in full.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Intellectual property</h2>
+      <p>
+        Once paid in full, you receive full rights to use the final deliverables for
+        your project, including presentations, listings, and construction planning.
+        We may display completed work in our portfolio unless you request otherwise
+        in writing before delivery.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Cancellations and refunds</h2>
+      <p>
+        You may cancel a project before work begins for a full refund of any deposit.
+        Once work has started, the deposit is non-refundable, and you will be billed
+        for work completed to the cancellation date. If we cannot deliver as agreed,
+        you are entitled to a refund for the undelivered portion.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Limitation of liability</h2>
+      <p>
+        Our liability is limited to the amount you paid for the project in question.
+        We are not liable for construction costs, delays, or decisions made based on
+        our design deliverables. Always verify designs with qualified local
+        professionals before building.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Changes to these terms</h2>
+      <p>
+        We may update these terms occasionally. The version in effect when you order
+        applies to your project.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Contact</h2>
+      <p>
+        Questions about these terms? Reach us via our <a href="/contact/">contact page</a>
+        or WhatsApp at <a href="https://wa.me/923044719600">+92 304 4719600</a>.
+      </p>
+    </div>
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>

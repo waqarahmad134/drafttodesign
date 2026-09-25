@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<BaseLayout
+  title="Disclaimer | DraftToDesign"
+  description="DraftToDesign disclaimer: our design and visualization services are not a substitute for licensed architects, engineers, or permit documentation."
+>
+  <Header slot="header" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <h1 class="text-4xl font-extrabold text-brand-900 mb-2">Disclaimer</h1>
+    <p class="text-sm text-slate-500 mb-8">Last updated: September 25, 2026</p>
+    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-5">
+      <p>
+        The information and services on drafttodesign.com are provided for general
+        design and visualization purposes. Please read the following carefully.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Not professional licensed services</h2>
+      <p>
+        DraftToDesign is a design and visualization studio, <strong>not a licensed
+        architecture or engineering firm</strong>. Our floor plans, drawings, 3D models,
+        renders, and design concepts are creative and planning tools. They are not
+        stamped plans, structural calculations, or construction documents, and they
+        do not satisfy building permit requirements on their own.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Verify before you build</h2>
+      <p>
+        Always have our deliverables reviewed by qualified local professionals
+        (contractor, structural engineer, or licensed architect) and your local
+        building authority before starting construction. We are not responsible for
+        construction decisions, costs, or outcomes based on our designs.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Portfolio and visuals</h2>
+      <p>
+        Images in our portfolio include 3D renders and AI-assisted visualizations
+        created to demonstrate our capabilities. They represent design concepts,
+        not photographs of completed construction.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Pricing and timelines</h2>
+      <p>
+        Prices shown on this website are starting prices and may change. Delivery
+        timelines are estimates. Your written project quote states the exact price
+        and timeline for your project.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">External links</h2>
+      <p>
+        Our site links to third-party services such as WhatsApp. We are not
+        responsible for the content, privacy practices, or availability of external
+        sites.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-900 pt-4">Contact</h2>
+      <p>
+        Questions about this disclaimer? Reach us via our <a href="/contact/">contact page</a>
+        or WhatsApp at <a href="https://wa.me/923044719600">+92 304 4719600</a>.
+      </p>
+    </div>
+  </div>
+  <Footer slot="footer" />
+  <WhatsAppFloat />
+</BaseLayout>
