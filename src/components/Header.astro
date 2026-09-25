@@ -32,7 +32,46 @@ const nav = [
         >
           Get a Quote
         </a>
+        <button
+          id="menu-btn"
+          class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-700 hover:bg-slate-100 transition"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white shadow-lg">
+    <nav class="px-4 py-3 space-y-1">
+      {nav.map((item) => (
+        <a href={item.href} class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition">
+          {item.label}
+        </a>
+      ))}
+      <a href="/contact/" class="block text-center mt-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">
+        Get a Quote
+      </a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isHidden = menu?.classList.toggle('hidden');
+    btn?.setAttribute('aria-expanded', String(!isHidden));
+  });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    })
+  );
+</script>
