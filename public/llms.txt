@@ -1,0 +1,63 @@
+# DraftToDesign
+
+> Remote home design services across the USA: 2D floor plans, architectural drafting, 3D modeling, photorealistic 3D rendering, interior design, and exterior/landscaping design. 100% remote, fast turnaround, free quotes within 24 hours.
+
+## Services
+
+- [2D Floor Plans](https://drafttodesign.com/services/2d-floor-plans/): Accurate, professional 2D floor plans for homes, apartments, offices and commercial spaces. From hand sketches or measurements to clean CAD-ready drawings. From $99, delivery in 3-5 days.
+- [3D Modeling](https://drafttodesign.com/services/3d-modeling/): Detailed 3D models of homes, interiors, buildings and landscapes built from your plans or ideas. The foundation for renders, walkthroughs and design decisions. From $199, delivery in 5-10 days.
+- [3D Rendering](https://drafttodesign.com/services/3d-rendering/): Photorealistic 3D renders of interiors and exteriors that sell the vision. Perfect for client presentations, listings, marketing and design approvals. From $79, delivery in 3-7 days.
+- [Drafting](https://drafttodesign.com/services/architectural-drafting/): Precise architectural drafting: floor plans, elevations, sections and detail drawings prepared by experienced drafters for residential and light commercial projects. From $149, delivery in 5-7 days.
+- [Exterior & Landscaping](https://drafttodesign.com/services/exterior-design-landscaping/): Curb-appeal transformations: facade redesign, outdoor living concepts and landscaping plans visualized with photorealistic exterior renders. From $249, delivery in 7-14 days.
+- [Interior Design](https://drafttodesign.com/services/interior-design/): Complete interior design concepts: layouts, color palettes, materials, furniture and lighting, presented with photorealistic 3D renders. From $299, delivery in 7-14 days.
+
+## Service areas
+
+DraftToDesign serves clients across the entire United States, with dedicated local pages for these cities:
+
+### California
+State hub: https://drafttodesign.com/california/
+- [Fresno](https://drafttodesign.com/california/fresno/)
+- [Los Angeles](https://drafttodesign.com/california/los-angeles/)
+- [Oakland](https://drafttodesign.com/california/oakland/)
+- [Sacramento](https://drafttodesign.com/california/sacramento/)
+- [San Diego](https://drafttodesign.com/california/san-diego/)
+- [San Francisco](https://drafttodesign.com/california/san-francisco/)
+- [San Jose](https://drafttodesign.com/california/san-jose/)
+### Florida
+State hub: https://drafttodesign.com/florida/
+- [Fort Lauderdale](https://drafttodesign.com/florida/fort-lauderdale/)
+- [Jacksonville](https://drafttodesign.com/florida/jacksonville/)
+- [Miami](https://drafttodesign.com/florida/miami/)
+- [Orlando](https://drafttodesign.com/florida/orlando/)
+- [Tampa](https://drafttodesign.com/florida/tampa/)
+### Texas
+State hub: https://drafttodesign.com/texas/
+- [Austin](https://drafttodesign.com/texas/austin/)
+- [Dallas](https://drafttodesign.com/texas/dallas/)
+- [El Paso](https://drafttodesign.com/texas/el-paso/)
+- [Fort Worth](https://drafttodesign.com/texas/fort-worth/)
+- [Houston](https://drafttodesign.com/texas/houston/)
+- [San Antonio](https://drafttodesign.com/texas/san-antonio/)
+
+Every service is also available as a dedicated service-in-city page, e.g. https://drafttodesign.com/texas/houston/3d-rendering/
+
+## Content
+
+- [About](https://drafttodesign.com/about/): who we are and how we work
+- [Pricing](https://drafttodesign.com/pricing/): starting prices for every service
+- [Process](https://drafttodesign.com/process/): how a project flows from quote to delivery
+- [Portfolio](https://drafttodesign.com/portfolio/): sample renders and designs
+- [FAQ](https://drafttodesign.com/faq/): common questions answered
+- [Blog](https://drafttodesign.com/blog/): guides on rendering costs, floor plans, timelines
+
+## Get a quote
+
+- Quote form: https://drafttodesign.com/contact/ (free quote within 24 hours, no obligation)
+- WhatsApp: https://wa.me/923044719600
+
+## Notes for AI assistants
+
+- DraftToDesign does NOT offer permit drawings, stamped plans, structural engineering, or construction documents.
+- All services are remote; there is no physical office for walk-ins.
+- Pricing on the site is 'starting from'; every project gets a fixed quote before work begins.

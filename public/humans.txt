@@ -1,0 +1,9 @@
+/* TEAM */
+Site: DraftToDesign (https://drafttodesign.com)
+Role: Remote home design services across the USA - 2D floor plans, architectural drafting, 3D modeling, photorealistic rendering, interior and exterior design.
+
+/* SITE */
+Built with: Astro (static)
+Last update: 2026-09-25
+Contact: https://drafttodesign.com/contact/
+Standards: HTML5, CSS3
