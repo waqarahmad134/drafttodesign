@@ -17,28 +17,56 @@ DraftToDesign serves clients across the entire United States, with dedicated loc
 
 ### California
 State hub: https://drafttodesign.com/california/
+- [Anaheim](https://drafttodesign.com/california/anaheim/)
+- [Bakersfield](https://drafttodesign.com/california/bakersfield/)
 - [Fresno](https://drafttodesign.com/california/fresno/)
+- [Glendale](https://drafttodesign.com/california/glendale/)
+- [Irvine](https://drafttodesign.com/california/irvine/)
+- [Long Beach](https://drafttodesign.com/california/long-beach/)
 - [Los Angeles](https://drafttodesign.com/california/los-angeles/)
 - [Oakland](https://drafttodesign.com/california/oakland/)
+- [Pasadena](https://drafttodesign.com/california/pasadena/)
+- [Riverside](https://drafttodesign.com/california/riverside/)
 - [Sacramento](https://drafttodesign.com/california/sacramento/)
 - [San Diego](https://drafttodesign.com/california/san-diego/)
 - [San Francisco](https://drafttodesign.com/california/san-francisco/)
 - [San Jose](https://drafttodesign.com/california/san-jose/)
+- [Santa Ana](https://drafttodesign.com/california/santa-ana/)
+- [Stockton](https://drafttodesign.com/california/stockton/)
 ### Florida
 State hub: https://drafttodesign.com/florida/
+- [Cape Coral](https://drafttodesign.com/florida/cape-coral/)
+- [Clearwater](https://drafttodesign.com/florida/clearwater/)
+- [Coral Gables](https://drafttodesign.com/florida/coral-gables/)
+- [Doral](https://drafttodesign.com/florida/doral/)
 - [Fort Lauderdale](https://drafttodesign.com/florida/fort-lauderdale/)
+- [Hialeah](https://drafttodesign.com/florida/hialeah/)
 - [Jacksonville](https://drafttodesign.com/florida/jacksonville/)
 - [Miami](https://drafttodesign.com/florida/miami/)
 - [Orlando](https://drafttodesign.com/florida/orlando/)
+- [Port St. Lucie](https://drafttodesign.com/florida/port-st-lucie/)
+- [St. Petersburg](https://drafttodesign.com/florida/st-petersburg/)
+- [Tallahassee](https://drafttodesign.com/florida/tallahassee/)
 - [Tampa](https://drafttodesign.com/florida/tampa/)
 ### Texas
 State hub: https://drafttodesign.com/texas/
+- [Arlington](https://drafttodesign.com/texas/arlington/)
 - [Austin](https://drafttodesign.com/texas/austin/)
+- [Corpus Christi](https://drafttodesign.com/texas/corpus-christi/)
 - [Dallas](https://drafttodesign.com/texas/dallas/)
 - [El Paso](https://drafttodesign.com/texas/el-paso/)
 - [Fort Worth](https://drafttodesign.com/texas/fort-worth/)
+- [Frisco](https://drafttodesign.com/texas/frisco/)
+- [Garland](https://drafttodesign.com/texas/garland/)
 - [Houston](https://drafttodesign.com/texas/houston/)
+- [Irving](https://drafttodesign.com/texas/irving/)
+- [Katy](https://drafttodesign.com/texas/katy/)
+- [Lubbock](https://drafttodesign.com/texas/lubbock/)
+- [Plano](https://drafttodesign.com/texas/plano/)
+- [Round Rock](https://drafttodesign.com/texas/round-rock/)
 - [San Antonio](https://drafttodesign.com/texas/san-antonio/)
+- [Sugar Land](https://drafttodesign.com/texas/sugar-land/)
+- [The Woodlands](https://drafttodesign.com/texas/the-woodlands/)
 
 Every service is also available as a dedicated service-in-city page, e.g. https://drafttodesign.com/texas/houston/3d-rendering/
 

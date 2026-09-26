@@ -413,5 +413,6 @@ const handCombos: Combo[] = [
 ];
 
 import { generatedCombos } from './combos-generated';
+import { generatedCombos2 } from './combos-generated-2';
 
-export const combos: Combo[] = [...handCombos, ...generatedCombos];
+export const combos: Combo[] = [...handCombos, ...generatedCombos, ...generatedCombos2];
